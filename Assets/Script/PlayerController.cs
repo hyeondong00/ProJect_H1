@@ -37,19 +37,7 @@ public class PlayerController : BaseController
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-
-        Debug.Log($"Before Update - Movement: {movementDirection}, Input: ({horizontal}, {vertical})");
-
-        if (horizontal != 0 || vertical != 0)
-        {
-            movementDirection = new Vector2(horizontal, vertical).normalized;
-        }
-        else
-        {
-            movementDirection = Vector2.zero; // 불필요한 이동 방지
-        }
-
-        Debug.Log($"After Update - Movement: {movementDirection}");
+        movementDirection = new Vector2(horizontal, vertical).normalized;
 
         if (movementDirection != Vector2.zero)
         {
