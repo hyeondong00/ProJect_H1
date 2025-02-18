@@ -7,12 +7,14 @@ public class PlayerController : BaseController
     private Camera mainCamera;
     private BoxCollider2D cameraBounds; // 카메라 이동을 제한할 Collider
 
+
     private float minX, maxX, minY, maxY;
 
     protected override void Start()
     {
         base.Start();
         mainCamera = Camera.main;
+        movementDirection = Vector2.zero;
 
         // 맵의 경계를 감지할 BoxCollider2D 찾기
         cameraBounds = GameObject.Find("CameraBounds").GetComponent<BoxCollider2D>();
@@ -35,7 +37,19 @@ public class PlayerController : BaseController
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        movementDirection = new Vector2(horizontal, vertical).normalized;
+
+        Debug.Log($"Before Update - Movement: {movementDirection}, Input: ({horizontal}, {vertical})");
+
+        if (horizontal != 0 || vertical != 0)
+        {
+            movementDirection = new Vector2(horizontal, vertical).normalized;
+        }
+        else
+        {
+            movementDirection = Vector2.zero; // 불필요한 이동 방지
+        }
+
+        Debug.Log($"After Update - Movement: {movementDirection}");
 
         if (movementDirection != Vector2.zero)
         {
