@@ -37,5 +37,5 @@ public class MiniGameEntrance : MonoBehaviour
         SceneManager.LoadScene("MiniGameScenes");
 
     }
-   
+
 }
