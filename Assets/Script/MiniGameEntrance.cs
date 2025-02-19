@@ -34,7 +34,7 @@ public class MiniGameEntrance : MonoBehaviour
     void LoadMiniGameScenes()
     {
         // 미니게임 씬 로드
-        SceneManager.LoadScene("MiniGameScenes");
+        SceneManager.LoadScene("MiniGameMain");
 
     }
 
